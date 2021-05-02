@@ -1,0 +1,124 @@
+Fonts
+=====
+
+Precompiling the font files to .mpy files will significantly reduce the memory
+required for fonts.
+
+Font Conversion
+---------------
+
+The `utils` directory contains the font_from_romfont.py program used to convert
+PC BIOS bitmap fonts from the font-bin directory of spacerace's
+https://github.com/spacerace/romfont repo.
+
+The utility converts all romfont bin files in the specified -input-directory
+(-i) and writes python font files to the specified -output-directory (-o).
+
+Characters included can be limited by using the -first-char (-f) and -last-char
+(-l) options.
+
+Example:
+
+    font_from_romfont -i font-bin -o fonts -f 32 -l 127
+
+
+.. literalinclude:: fontformat.py
+   :linenos:
+   :language: python
+   :caption: Example python font file.
+
+8x8 Fonts
+---------
+
+.. figure:: _static/vga1_8x8.png
+   :align: center
+
+   vga1_8x8.py: 128 Character 8x8 Font
+
+|
+
+.. figure:: _static/vga2_8x8.png
+   :align: center
+
+   vga2_8x8.py: 256 Character 8x8 Font
+
+|
+
+8x16 Fonts
+----------
+
+.. figure:: _static/vga1_8x16.png
+   :align: center
+
+   vga1_8x16.py: 128 Character 8x16 Font
+
+|
+
+.. figure:: _static/vga2_8x16.png
+   :align: center
+
+   vga2_8x16.py: 256 Character 8x16 Font
+
+|
+
+16x16 Fonts
+-----------
+
+.. figure:: _static/vga1_16x16.png
+   :align: center
+
+   vga1_16x16.py: 128 Character 16x16 Thin Font
+
+|
+
+.. figure:: _static/vga1_bold_16x16.png
+   :align: center
+
+   vga1_bold_16x16.py: 128 Character 16x16 Bold Font
+
+|
+
+.. figure:: _static/vga2_16x16.png
+   :align: center
+
+   vga2_16x16.py: 256 Character 16x16 Thin Font
+
+|
+
+.. figure:: _static/vga2_bold_16x16.png
+   :align: center
+
+   vga2_bold_16x16.py: 256 Character 16x16 Bold Font
+
+|
+
+16x32 Fonts
+-----------
+
+.. figure:: _static/vga1_16x32.png
+   :align: center
+
+   vga1_16x32.py: 128 Character 16x32 Thin Font
+
+|
+
+.. figure:: _static/vga1_bold_16x32.png
+   :align: center
+
+   vga1_bold_16x32.py: 128 Character 16x32 Bold Font
+
+|
+
+.. figure:: _static/vga2_16x32.png
+   :align: center
+
+   vga2_16x32.py: 256 Character 16x32 Thin Font
+
+|
+
+.. figure:: _static/vga2_bold_16x32.png
+   :align: center
+
+   vga2_bold_16x32.py: 256 Character 16x32 Bold Font
+
+|

@@ -1,0 +1,41 @@
+Example Programs
+================
+
+lines.py
+--------
+
+.. literalinclude:: ../../examples/lines.py
+   :linenos:
+   :language: python
+
+hello.py
+--------
+
+.. literalinclude:: ../../examples/hello.py
+   :linenos:
+   :language: python
+
+chars.py
+--------
+
+.. literalinclude:: ../../examples/chars.py
+   :linenos:
+   :language: python
+
+scroll.py
+---------
+
+.. literalinclude:: ../../examples/scroll.py
+   :linenos:
+   :language: python
+
+toasters.py
+-----------
+
+Flying toasters sprite demo using bitmaps created from spritesheet using
+ImageMagick's convert and imgtobitmap.py utility. See the maketoast script in
+the utils directory for details.
+
+.. literalinclude:: ../../examples/toasters.py
+   :linenos:
+   :language: python
