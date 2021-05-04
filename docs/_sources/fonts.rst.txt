@@ -1,11 +1,22 @@
 Fonts
 =====
 
-Precompiling the font files to .mpy files will significantly reduce the memory
-required for fonts.
+Two type of fonts are supported by this driver fixed size bitmap fonts
+converted from PC Bios images using the font_from_romfont utility and fixed or
+proportional fonts converted from True-Type fonts using the font2bitmap
+utility.
 
-Font Conversion
----------------
+The rom fonts are available in 128 and 256 PC character sets in 8x8, 8x16, 16x6
+and 16x32 pixel sizes. They written using the text method.
+
+The True-Type fonts can be converted to any size as long as the widest
+character is 256 pixels or less. They are written using the write method.
+
+Pre-compiling the font files to .mpy files will significantly reduce the memory
+required for the fonts.
+
+Rom Font Conversion
+-------------------
 
 The `utils` directory contains the font_from_romfont.py program used to convert
 PC BIOS bitmap fonts from the font-bin directory of spacerace's
@@ -27,8 +38,27 @@ Example:
    :language: python
    :caption: Example python font file.
 
-8x8 Fonts
----------
+
+True-Type Font Conversion
+-------------------------
+
+
+The `utils` directory contains the `font2bitmap.py` program used to convert
+True-Type font into bitmap font modules. Use the -h option to see details of
+the available options.  The `font2bitmap.py` program uses font handling classes
+from Dan Bader blog post on using freetype
+http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python and
+the negative glyph.left fix from peterhinch's font conversion program
+https://github.com/peterhinch/micropython-font-to-py.  The utility requires the python freetype module.
+
+Example use:
+
+- ./font2bitmap NotoSans-Regular.ttf 32 -s "0123456789ABCEDF"
+- ./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f
+
+
+8x8 Rom Fonts
+-------------
 
 .. figure:: _static/vga1_8x8.png
    :align: center
@@ -44,8 +74,8 @@ Example:
 
 |
 
-8x16 Fonts
-----------
+8x16 Rom Fonts
+--------------
 
 .. figure:: _static/vga1_8x16.png
    :align: center
@@ -61,8 +91,8 @@ Example:
 
 |
 
-16x16 Fonts
------------
+16x16 Rom Fonts
+---------------
 
 .. figure:: _static/vga1_16x16.png
    :align: center
@@ -92,8 +122,8 @@ Example:
 
 |
 
-16x32 Fonts
------------
+16x32 Rom Fonts
+---------------
 
 .. figure:: _static/vga1_16x32.png
    :align: center

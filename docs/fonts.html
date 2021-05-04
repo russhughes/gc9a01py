@@ -93,14 +93,16 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#chars-py">chars.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#scroll-py">scroll.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#toasters-py">toasters.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#chango-py">Chango.py</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Fonts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#font-conversion">Font Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#x8-fonts">8x8 Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#x16-fonts">8x16 Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">16x16 Fonts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#x32-fonts">16x32 Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rom-font-conversion">Rom Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#true-type-font-conversion">True-Type Font Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x8-rom-fonts">8x8 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x16-rom-fonts">8x16 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">16x16 Rom Fonts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x32-rom-fonts">16x32 Rom Fonts</a></li>
 </ul>
 </li>
 </ul>
@@ -172,10 +174,18 @@
             
   <div class="section" id="fonts">
 <h1>Fonts<a class="headerlink" href="#fonts" title="Permalink to this headline">¶</a></h1>
-<p>Precompiling the font files to .mpy files will significantly reduce the memory
-required for fonts.</p>
-<div class="section" id="font-conversion">
-<h2>Font Conversion<a class="headerlink" href="#font-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Two type of fonts are supported by this driver fixed size bitmap fonts
+converted from PC Bios images using the font_from_romfont utility and fixed or
+proportional fonts converted from True-Type fonts using the font2bitmap
+utility.</p>
+<p>The rom fonts are available in 128 and 256 PC character sets in 8x8, 8x16, 16x6
+and 16x32 pixel sizes. They written using the text method.</p>
+<p>The True-Type fonts can be converted to any size as long as the widest
+character is 256 pixels or less. They are written using the write method.</p>
+<p>Pre-compiling the font files to .mpy files will significantly reduce the memory
+required for the fonts.</p>
+<div class="section" id="rom-font-conversion">
+<h2>Rom Font Conversion<a class="headerlink" href="#rom-font-conversion" title="Permalink to this headline">¶</a></h2>
 <p>The <cite>utils</cite> directory contains the font_from_romfont.py program used to convert
 PC BIOS bitmap fonts from the font-bin directory of spacerace’s
 <a class="reference external" href="https://github.com/spacerace/romfont">https://github.com/spacerace/romfont</a> repo.</p>
@@ -226,8 +236,23 @@ PC BIOS bitmap fonts from the font-bin directory of spacerace’s
 </td></tr></table></div>
 </div>
 </div>
-<div class="section" id="x8-fonts">
-<h2>8x8 Fonts<a class="headerlink" href="#x8-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="true-type-font-conversion">
+<h2>True-Type Font Conversion<a class="headerlink" href="#true-type-font-conversion" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>utils</cite> directory contains the <cite>font2bitmap.py</cite> program used to convert
+True-Type font into bitmap font modules. Use the -h option to see details of
+the available options.  The <cite>font2bitmap.py</cite> program uses font handling classes
+from Dan Bader blog post on using freetype
+<a class="reference external" href="http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python">http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python</a> and
+the negative glyph.left fix from peterhinch’s font conversion program
+<a class="reference external" href="https://github.com/peterhinch/micropython-font-to-py">https://github.com/peterhinch/micropython-font-to-py</a>.  The utility requires the python freetype module.</p>
+<p>Example use:</p>
+<ul class="simple">
+<li><p>./font2bitmap NotoSans-Regular.ttf 32 -s “0123456789ABCEDF”</p></li>
+<li><p>./font2bitmap.py Chango-Regular.ttf 16 -c 0x20-0x7f</p></li>
+</ul>
+</div>
+<div class="section" id="x8-rom-fonts">
+<h2>8x8 Rom Fonts<a class="headerlink" href="#x8-rom-fonts" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id3">
 <img alt="_images/vga1_8x8.png" src="_images/vga1_8x8.png" />
 <p class="caption"><span class="caption-text">vga1_8x8.py: 128 Character 8x8 Font</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
@@ -243,8 +268,8 @@ PC BIOS bitmap fonts from the font-bin directory of spacerace’s
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="x16-fonts">
-<h2>8x16 Fonts<a class="headerlink" href="#x16-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="x16-rom-fonts">
+<h2>8x16 Rom Fonts<a class="headerlink" href="#x16-rom-fonts" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id5">
 <img alt="_images/vga1_8x16.png" src="_images/vga1_8x16.png" />
 <p class="caption"><span class="caption-text">vga1_8x16.py: 128 Character 8x16 Font</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
@@ -261,7 +286,7 @@ PC BIOS bitmap fonts from the font-bin directory of spacerace’s
 </div>
 </div>
 <div class="section" id="id1">
-<h2>16x16 Fonts<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>16x16 Rom Fonts<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id7">
 <img alt="_images/vga1_16x16.png" src="_images/vga1_16x16.png" />
 <p class="caption"><span class="caption-text">vga1_16x16.py: 128 Character 16x16 Thin Font</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
@@ -291,8 +316,8 @@ PC BIOS bitmap fonts from the font-bin directory of spacerace’s
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="x32-fonts">
-<h2>16x32 Fonts<a class="headerlink" href="#x32-fonts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="x32-rom-fonts">
+<h2>16x32 Rom Fonts<a class="headerlink" href="#x32-rom-fonts" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="id11">
 <img alt="_images/vga1_16x32.png" src="_images/vga1_16x32.png" />
 <p class="caption"><span class="caption-text">vga1_16x32.py: 128 Character 16x32 Thin Font</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>

@@ -29,6 +29,7 @@ scroll.py
    :linenos:
    :language: python
 
+
 toasters.py
 -----------
 
@@ -36,6 +37,16 @@ Flying toasters sprite demo using bitmaps created from spritesheet using
 ImageMagick's convert and imgtobitmap.py utility. See the maketoast script in
 the utils directory for details.
 
-.. literalinclude:: ../../examples/toasters.py
+.. literalinclude:: ../../examples/toasters/toasters.py
+   :linenos:
+   :language: python
+
+Chango.py
+---------
+
+Test for font2bitmap converter for the GC9A01 display.
+See the font2bitmap program in the utils directory.
+
+.. literalinclude:: ../../examples/truetype/chango.py
    :linenos:
    :language: python

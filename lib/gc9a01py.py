@@ -845,3 +845,59 @@ class GC9A01():
                 buffer[i + 1] = color_index & 0xff
 
         self.blit_buffer(buffer, x, y, bitmap.WIDTH, bitmap.HEIGHT)
+
+    # @micropython.native
+    def write(self, font, string, x, y, fg=WHITE, bg=BLACK):
+        """
+        Write a string using a converted true-type font on the display starting
+        at the specified column and row
+
+        Args: font (font): The module containing the conveted true-type font
+            s (string): The string to write
+            x (int): column to start writing
+            y (int): row to start writing
+            fg (int): foregound color, optional, defaults to WHITE
+            bg (int): background color, optional, defaults to BLACK
+        """
+        buffer_len = font.HEIGHT * font.MAX_WIDTH * 2
+        buffer = bytearray(buffer_len)
+        fg_hi = (fg & 0xff00) >> 8
+        fg_lo = fg & 0xff
+
+        bg_hi = (bg & 0xff00) >> 8
+        bg_lo = bg & 0xff
+
+        for character in string:
+            try:
+                char_index = font.MAP.index(character)
+                offset = char_index * font.OFFSET_WIDTH
+                bs_bit = font.OFFSETS[offset]
+                if font.OFFSET_WIDTH > 1:
+                    bs_bit = (bs_bit << 8) + font.OFFSETS[offset + 1]
+
+                if font.OFFSET_WIDTH > 2:
+                    bs_bit = (bs_bit << 8) + font.OFFSETS[offset + 2]
+
+                char_width = font.WIDTHS[char_index]
+                buffer_needed = char_width * font.HEIGHT * 2
+
+                for i in range(0, buffer_needed, 2):
+                    if font.BITMAPS[bs_bit // 8] & 1 << (7 - (bs_bit % 8)) > 0:
+                        buffer[i] = fg_hi
+                        buffer[i + 1] = fg_lo
+                    else:
+                        buffer[i] = bg_hi
+                        buffer[i + 1] = bg_lo
+
+                    bs_bit += 1
+
+                to_col = x + char_width - 1
+                to_row = y + font.HEIGHT - 1
+                if self.width > to_col and self.height > to_row:
+                    self._set_window(x, y, to_col, to_row)
+                    self._write(None, buffer[0:buffer_needed])
+
+                x += char_width
+
+            except ValueError:
+                pass
