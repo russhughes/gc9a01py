@@ -8,9 +8,9 @@ chango.py
 from machine import Pin, SPI
 import gc9a01py
 
-import chango_16 as font_16
-import chango_32 as font_32
-import chango_64 as font_64
+from truetype import chango_16 as font_16
+from truetype import chango_32 as font_32
+from truetype import chango_64 as font_64
 
 
 def main():

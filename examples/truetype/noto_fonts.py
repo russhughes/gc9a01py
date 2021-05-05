@@ -7,9 +7,9 @@ noto_fonts Writes the names of three Noto fonts centered on the display
 from machine import SPI, Pin
 import gc9a01py as gc9a01
 
-import NotoSans_32 as noto_sans
-import NotoSerif_32 as noto_serif
-import NotoSansMono_32 as noto_mono
+from truetype import NotoSans_32 as noto_sans
+from truetype import NotoSerif_32 as noto_serif
+from truetype import NotoSansMono_32 as noto_mono
 
 
 def main():
