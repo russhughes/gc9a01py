@@ -491,12 +491,16 @@ module</p></li>
 <code class="sig-name descname"><span class="pre">write</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">micropython.const</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gc9a01py.html#GC9A01.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gc9a01py.GC9A01.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write a string using a converted true-type font on the display starting
 at the specified column and row</p>
-<dl class="simple">
-<dt>Args: font (font): The module containing the converted true-type font</dt><dd><p>s (string): The string to write
-x (int): column to start writing
-y (int): row to start writing
-fg (int): foreground color, optional, defaults to WHITE
-bg (int): background color, optional, defaults to BLACK</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font</strong> (<em>font</em>) – The module containing the converted true-type font</p></li>
+<li><p><strong>s</strong> (<em>string</em>) – The string to write</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – column to start writing</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – row to start writing</p></li>
+<li><p><strong>fg</strong> (<em>int</em>) – foreground color, optional, defaults to WHITE</p></li>
+<li><p><strong>bg</strong> (<em>int</em>) – background color, optional, defaults to BLACK</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
