@@ -852,7 +852,8 @@ class GC9A01():
         Write a string using a converted true-type font on the display starting
         at the specified column and row
 
-        Args: font (font): The module containing the converted true-type font
+        Args:
+            font (font): The module containing the converted true-type font
             s (string): The string to write
             x (int): column to start writing
             y (int): row to start writing
