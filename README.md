@@ -11,7 +11,7 @@ and 16 bit wide bitmap fonts with heights that are multiples of 8. Included are
 programs.
 
 Utilities to convert bitmaps fonts and images to bitmap modules are included in
-the utils directory. Documentation can be found in the docs directory.
+the utils directory. Documentation can be found in the docs directory and at https://penfold.owt.com/gc9a01py/
 
 If you are looking for a faster driver with additional features, check out the
 C version of the driver at https://github.com/russhughes/gc9a01_mpy

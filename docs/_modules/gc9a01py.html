@@ -1024,11 +1024,11 @@
 <span class="sd">        Write a string using a converted true-type font on the display starting</span>
 <span class="sd">        at the specified column and row</span>
 
-<span class="sd">        Args: font (font): The module containing the conveted true-type font</span>
+<span class="sd">        Args: font (font): The module containing the converted true-type font</span>
 <span class="sd">            s (string): The string to write</span>
 <span class="sd">            x (int): column to start writing</span>
 <span class="sd">            y (int): row to start writing</span>
-<span class="sd">            fg (int): foregound color, optional, defaults to WHITE</span>
+<span class="sd">            fg (int): foreground color, optional, defaults to WHITE</span>
 <span class="sd">            bg (int): background color, optional, defaults to BLACK</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">buffer_len</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">HEIGHT</span> <span class="o">*</span> <span class="n">font</span><span class="o">.</span><span class="n">MAX_WIDTH</span> <span class="o">*</span> <span class="mi">2</span>
@@ -1072,7 +1072,27 @@
                 <span class="n">x</span> <span class="o">+=</span> <span class="n">char_width</span>
 
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="k">pass</span></div></div>
+                <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="GC9A01.write_width"><a class="viewcode-back" href="../gc9a01py.html#gc9a01py.GC9A01.write_width">[docs]</a>    <span class="k">def</span> <span class="nf">write_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the width in pixels of the string if it was written with the</span>
+<span class="sd">        specified font</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            font (font): The module containing the converted true-type font</span>
+<span class="sd">            string (string): The string to measure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">char_index</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">MAP</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+                <span class="n">width</span> <span class="o">+=</span> <span class="n">font</span><span class="o">.</span><span class="n">WIDTHS</span><span class="p">[</span><span class="n">char_index</span><span class="p">]</span>
+
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">width</span></div></div>
 </pre></div>
 
            </div>

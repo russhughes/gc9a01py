@@ -492,11 +492,26 @@ module</p></li>
 <dd><p>Write a string using a converted true-type font on the display starting
 at the specified column and row</p>
 <dl class="simple">
-<dt>Args: font (font): The module containing the conveted true-type font</dt><dd><p>s (string): The string to write
+<dt>Args: font (font): The module containing the converted true-type font</dt><dd><p>s (string): The string to write
 x (int): column to start writing
 y (int): row to start writing
-fg (int): foregound color, optional, defaults to WHITE
+fg (int): foreground color, optional, defaults to WHITE
 bg (int): background color, optional, defaults to BLACK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gc9a01py.GC9A01.write_width">
+<code class="sig-name descname"><span class="pre">write_width</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gc9a01py.html#GC9A01.write_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gc9a01py.GC9A01.write_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the width in pixels of the string if it was written with the
+specified font</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>font</strong> (<em>font</em>) – The module containing the converted true-type font</p></li>
+<li><p><strong>string</strong> (<em>string</em>) – The string to measure</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

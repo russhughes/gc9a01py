@@ -49,7 +49,9 @@ the available options.  The `font2bitmap.py` program uses font handling classes
 from Dan Bader blog post on using freetype
 http://dbader.org/blog/monochrome-font-rendering-with-freetype-and-python and
 the negative glyph.left fix from peterhinch's font conversion program
-https://github.com/peterhinch/micropython-font-to-py.  The utility requires the python freetype module.
+https://github.com/peterhinch/micropython-font-to-py.
+
+The utility requires the python freetype module.
 
 Example use:
 

@@ -852,11 +852,11 @@ class GC9A01():
         Write a string using a converted true-type font on the display starting
         at the specified column and row
 
-        Args: font (font): The module containing the conveted true-type font
+        Args: font (font): The module containing the converted true-type font
             s (string): The string to write
             x (int): column to start writing
             y (int): row to start writing
-            fg (int): foregound color, optional, defaults to WHITE
+            fg (int): foreground color, optional, defaults to WHITE
             bg (int): background color, optional, defaults to BLACK
         """
         buffer_len = font.HEIGHT * font.MAX_WIDTH * 2
@@ -901,3 +901,23 @@ class GC9A01():
 
             except ValueError:
                 pass
+
+    def write_width(self, font, string):
+        """
+        Returns the width in pixels of the string if it was written with the
+        specified font
+
+        Args:
+            font (font): The module containing the converted true-type font
+            string (string): The string to measure
+        """
+        width = 0
+        for character in string:
+            try:
+                char_index = font.MAP.index(character)
+                width += font.WIDTHS[char_index]
+
+            except ValueError:
+                pass
+
+        return width
