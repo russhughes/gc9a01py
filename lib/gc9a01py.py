@@ -840,9 +840,10 @@ class GC9A01():
                 color_index |= (bitmap.BITMAP[bs_bit // 8]
                                 & 1 << (7 - (bs_bit % 8))) > 0
                 bs_bit += 1
-                color = bitmap.PALETTE[color_index]
-                buffer[i] = color & 0xff00 >> 8
-                buffer[i + 1] = color_index & 0xff
+
+            color = bitmap.PALETTE[color_index]
+            buffer[i] = color & 0xff00 >> 8
+            buffer[i + 1] = color_index & 0xff
 
         self.blit_buffer(buffer, x, y, bitmap.WIDTH, bitmap.HEIGHT)
 
